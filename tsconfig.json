@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strict": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "types": ["node", "aws-lambda"],
+    "typeRoots": ["node_modules/@types"],
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "outDir": "./dist"
+  }
+}

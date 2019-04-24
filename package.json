@@ -1,0 +1,14 @@
+{
+  "name": "template-lambda-typescript",
+  "version": "1.0.0",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.{js,ts,json}\"",
+    "build": "tsc --build tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.24",
+    "@types/node": "^11.13.7",
+    "prettier": "^1.17.0",
+    "typescript": "^3.4.4"
+  }
+}
