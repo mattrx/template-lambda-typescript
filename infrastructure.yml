@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+  Function:
+    Timeout: 180
+
+Parameters:
+  DeploymentEnvironment:
+    Type: String
+
+Resources:
+  Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: template-lambda-typescript
+      Runtime: nodejs8.10
+      Handler: index.handler
+      CodeUri: ./dist
+      Environment:
+        Variables:
+          CONFIG_STORE_TYPE: ssm
+          CONFIG_STORE_SSM_PATH: /template-lambda-typescript # @TODO: change to project specific ssm path
+          CONFIG_STORE_JSON_FILE: .ssm.json # DO NOT REMOVE
+      MemorySize: 128
+      Policies:
+        - AmazonSSMReadOnlyAccess
+        - KMSDecryptPolicy:
+            KeyId: XXX # @TODO: change to project specific kms key
+
+  FunctionLogGroup:
+    Type: "AWS::Logs::LogGroup"
+    DependsOn: "Function"
+    Properties:
+      RetentionInDays: 14
+      LogGroupName: !Join ["", ["/aws/lambda/", !Ref Function]]
