@@ -10,7 +10,7 @@
     "@types/aws-lambda": "^8.10.24",
     "@types/node": "^11.13.7",
     "prettier": "^1.17.0",
-    "typescript": "^3.4.4"
+    "typescript": "^3.5.1"
   },
   "dependencies": {
     "aws-sdk": "^2.450.0"
